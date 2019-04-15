@@ -1,15 +1,26 @@
-CREATE OR REPLACE FUNCTION hotelcrm.add_hotel(x varchar, y varchar)
- RETURNS void
+--добавление отеля
+CREATE OR REPLACE FUNCTION hotelcrm.add_hotel(x character varying, y character varying)
+ RETURNS boolean
  LANGUAGE plpgsql
 AS $function$
 	begin
-		insert into hotels (hotel_name, hotel_address) values(x, y);
+		insert into hotels(hotel_name, hotel_address) values(x, y);
+		return true;
 	end;
-$function$
-;
+$function$;
 
+--привязка менеджера к отелю
+CREATE OR REPLACE FUNCTION hotelcrm.add_manager_to_hotel(xFirstname varchar, xName varchar, xHotel_no integer)
+ RETURNS boolean
+ LANGUAGE plpgsql
+AS $function$
+	begin
+		INSERT INTO hotelcrm.manager (firstname, "name", hotel_no) VALUES(xFirstname, xName, xHotel_no);
+		return true;
+	end;
+$function$;
 
-
+--функция раскидывания данных по таблицам в БД
 CREATE OR REPLACE FUNCTION hotelcrm.add_guest_all(xSurname varchar, xName varchar, xLastname varchar, xBday date, xDescr text,
 xSerie integer, xNumber integer, xGivedate date, xWhogive text, xCountry varchar, xCity varchar, xStreet varchar, xRegDate date)
 RETURNS bigint
@@ -28,15 +39,15 @@ AS $function$
 		if xRes <> 0 Then
 			raise exception 'Ошибка при добавлении паспорта!';
 		end if;
-		xRes = hotelcrm.add_address(xCountry, xCity, xStreet, xRegDate)
+		xRes = hotelcrm.add_address(xGuest_no, xCountry, xCity, xStreet, xRegDate);
 		if xRes <> 0 Then
 			raise exception 'Ошибка при добавлении адреса!';
 		end if;
 		return xGuest_no; 
 	end;
-$function$
-;
+$function$;
 
+--добавление информации о госте
 CREATE OR REPLACE FUNCTION hotelcrm.add_guest(xSurname varchar, xName varchar, xLastname varchar, xBday date, xDescr text)
 RETURNS bigint
  LANGUAGE plpgsql
@@ -47,23 +58,22 @@ declare
 		INSERT INTO hotelcrm.guest(firstname, "name", secondname, birthday, descr) VALUES(xSurname, xName, xLastname, xBday, xDescr);
 		RETURN xRes = 1;
 	end;
-$function$
-;
+$function$;
 
-CREATE OR REPLACE FUNCTION hotelcrm.add_address(xCountry varchar, xCity varchar, xStreet varchar, xRegDate date)
+--добавление прописки
+CREATE OR REPLACE FUNCTION hotelcrm.add_address(xGuest_no bigint, xCountry varchar, xCity varchar, xStreet varchar, xRegDate date)
 RETURNS bigint
  LANGUAGE plpgsql
 AS $function$
 declare
 	xRes bigint;
 	begin
-		INSERT INTO hotelcrm.address(guest_no, country, city, street, reg_data) VALUES(xCountry, xCity, xStreet, xRegDate);
+		INSERT INTO hotelcrm.address(guest_no, country, city, street, reg_data) VALUES(xGuest_no, xCountry, xCity, xStreet, xRegDate);
 		RETURN xRes = 1;
 	end;
-$function$
-;
+$function$;
 
-
+--добавление паспорта
 CREATE OR REPLACE FUNCTION hotelcrm.add_passport(xGuest_no bigint, xSerie integer, xNumber integer, xGivedate date, xWhogive text)
 RETURNS bigint
  LANGUAGE plpgsql
@@ -74,9 +84,9 @@ declare
 		INSERT INTO hotelcrm.passports (guest_no, series, "number", givedate, who_give) VALUES(xGuest_no, xSerie, xNumber, xGivedate, xWhogive);
 		RETURN xRes = 1;
 	end;
-$function$
-;
+$function$;
 
+--получение номера последнего гостя
 create or REPLACE function hotelcrm.get_last_guest_no() 
 	returns bigint
 	LANGUAGE plpgsql
@@ -88,5 +98,3 @@ as $function$
 		return coalesce(xGuest_no, 0);
 	end
 $function$;
-
-
