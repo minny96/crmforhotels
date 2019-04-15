@@ -1,79 +1,112 @@
-create table hotels (
-	hotel_no bigserial not null primary key,
-	name varchar(40) null,
-	address varchar(40) null
+-- Drop table
+
+-- DROP TABLE hotelcrm.address
+CREATE TABLE hotelcrm.address (
+	guest_no bigserial NOT NULL,
+	country varchar(80) NULL,
+	city varchar(80) NULL,
+	street varchar(80) NULL,
+	reg_data date NULL,
+	descr text NULL,
+	CONSTRAINT address_pkey PRIMARY KEY (guest_no),
+	CONSTRAINT address_guest_no_fkey FOREIGN KEY (guest_no) REFERENCES guest(guest_no) ON DELETE CASCADE
 );
-create table manager (
-	manager_no bigserial not null primary key,
-	firstname varchar(80) null,
-	name varchar(80) null,
-	hotel_no integer references hotels(hotel_no)
-);
-create table rooms (
-	room_no bigserial not null primary key,
-	size integer null,
-	floor integer null,
-	category varchar(20) null,
-	price money default(0),
-	descr text null
-);
-create table guest (
-	guest_no bigserial not null primary key,
-	firstname varchar(80) null,
-	name varchar(80) null,
-	secondname varchar(80) null,
-	birthday date null,
-	descr text null
+-- Drop table
+
+-- DROP TABLE hotelcrm.guest
+
+CREATE TABLE hotelcrm.guest (
+	guest_no bigserial NOT NULL,
+	firstname varchar(80) NULL,
+	"name" varchar(80) NULL,
+	secondname varchar(80) NULL,
+	birthday date NULL,
+	descr text NULL,
+	CONSTRAINT guest_pkey PRIMARY KEY (guest_no)
+)
+WITH (
+	OIDS=FALSE
 );
 
-create table passports (
-	guest_no bigserial not null primary key,
-	series integer null,
-	number integer null,
-	givedate date null,
-	who_give text null,
-	descr text null
+-- Drop table
+
+-- DROP TABLE hotelcrm.hotels
+
+CREATE TABLE hotelcrm.hotels (
+	hotel_no bigserial NOT NULL,
+	hotel_name varchar(40) NULL,
+	hotel_address varchar(40) NULL,
+	CONSTRAINT hotels_pkey PRIMARY KEY (hotel_no)
+)
+WITH (
+	OIDS=FALSE
 );
-create table address (
-	guest_no bigserial not null primary key,
-	country varchar(80) null,
-	city varchar(80) null,
-	street varchar(80) null,
-	reg_data date null,
-	descr text null
+-- Drop table
+
+-- DROP TABLE hotelcrm.manager
+
+CREATE TABLE hotelcrm.manager (
+	manager_no bigserial NOT NULL,
+	firstname varchar(80) NULL,
+	"name" varchar(80) NULL,
+	hotel_no int4 NULL,
+	CONSTRAINT manager_pkey PRIMARY KEY (manager_no),
+	CONSTRAINT manager_hotel_no_fkey FOREIGN KEY (hotel_no) REFERENCES hotels(hotel_no)
+)
+WITH (
+	OIDS=FALSE
 );
-alter table passports
-add foreign key(guest_no) references guest(guest_no)
-on delete cascade
+-- Drop table
 
-alter table address
-add foreign key(guest_no) references guest(guest_no)
-on delete cascade
+-- DROP TABLE hotelcrm.passports
 
-create table pay_info(
-	pay_no bigserial not null primary key,
-	guest_no integer null,
-	room_no integer null,
-	manager_no integer null,
-	datein timestamp null,
-	dateout timestamp null
+CREATE TABLE hotelcrm.passports (
+	guest_no bigserial NOT NULL,
+	series int4 NULL,
+	"number" int4 NULL,
+	givedate date NULL,
+	who_give text NULL,
+	descr text NULL,
+	CONSTRAINT passports_pkey PRIMARY KEY (guest_no),
+	CONSTRAINT passports_guest_no_fkey FOREIGN KEY (guest_no) REFERENCES guest(guest_no) ON DELETE CASCADE
+)
+WITH (
+	OIDS=FALSE
 );
-alter table pay_info
-add constraint pays_pkey 
-foreign key(guest_no) references guest(guest_no)
-on delete cascade
+-- Drop table
 
-alter table pay_info
-add constraint room_pkey 
-foreign key(room_no) references rooms(room_no)
-on delete cascade
+-- DROP TABLE hotelcrm.pay_info
 
-alter table pay_info 
-add constraint manager_pkey
-foreign key(manager_no) references manager(manager_no) 
-on delete cascade
+CREATE TABLE hotelcrm.pay_info (
+	pay_no bigserial NOT NULL,
+	guest_no int4 NULL,
+	room_no int4 NULL,
+	manager_no int4 NULL,
+	datein timestamp NULL,
+	dateout timestamp NULL,
+	CONSTRAINT pay_info_pkey PRIMARY KEY (pay_no),
+	CONSTRAINT manager_pkey FOREIGN KEY (manager_no) REFERENCES manager(manager_no) ON DELETE CASCADE,
+	CONSTRAINT pays_pkey FOREIGN KEY (guest_no) REFERENCES guest(guest_no) ON DELETE CASCADE,
+	CONSTRAINT room_pkey FOREIGN KEY (room_no) REFERENCES rooms(room_no) ON DELETE CASCADE
+)
+WITH (
+	OIDS=FALSE
+);
+-- Drop table
 
---create view
-create view manager_of_hotel as 
-	select m.firstname, m.name, h.hotel_name, h.hotel_address from manager m, hotels h 
-	where h.hotel_no = m.hotel_no;
+-- DROP TABLE hotelcrm.rooms
+
+CREATE TABLE hotelcrm.rooms (
+	room_no bigserial NOT NULL,
+	"size" int4 NULL,
+	floor int4 NULL,
+	category varchar(20) NULL,
+	price money NULL DEFAULT 0,
+	descr text NULL,
+	hotel_no int4 NULL,
+	CONSTRAINT rooms_pkey PRIMARY KEY (room_no),
+	CONSTRAINT rooms_hotel_no_fkey FOREIGN KEY (hotel_no) REFERENCES hotels(hotel_no)
+)
+WITH (
+	OIDS=FALSE
+);
