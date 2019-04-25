@@ -114,14 +114,14 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form role="form">
+                                    <form role="form" method="POST" action="addHostel.php"> 
                                         <div class="form-group">
                                             <label>Название хостела:</label>
-                                            <input class="form-control" placeholder="Введите фамилию гостя" />
+                                            <input class="form-control" placeholder="Введите фамилию гостя" name="hName" />
                                         </div>
                                         <div class="form-group">
                                             <label>Адрес Хостела:</label>
-                                            <input class="form-control" placeholder="Введите имя гостя" />
+                                            <input class="form-control" placeholder="Введите имя гостя" name="hAddress" />
                                         </div>
                                         <button type="submit" class="btn btn-default">Добавить гостя</button>
                                     </form>
