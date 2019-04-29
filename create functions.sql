@@ -98,3 +98,21 @@ as $function$
 		return coalesce(xGuest_no, 0);
 	end
 $function$;
+
+
+CREATE OR REPLACE FUNCTION hotelcrm.add_room(xSize integer, xFloor integer, xCategory varchar, xPrice money, xDescr text, xHotel_no integer, xBooking boolean)
+RETURNS boolean
+ LANGUAGE plpgsql
+AS $function$
+	declare 
+		xRes boolean;
+	begin
+		xRes = INSERT INTO hotelcrm.rooms ("size", floor, category, price, descr, hotel_no, is_booked) VALUES(xSize, xFloor, xCategory, xPrice, xDescr, xHotel_no, xBooking);
+		if xRes <> 0 Then
+			raise exception 'Ошибка при добавлении комнаты!';
+			xRes = false;
+		end if;
+		xRes = true;
+		return xRes; 
+	end;
+$function$;
