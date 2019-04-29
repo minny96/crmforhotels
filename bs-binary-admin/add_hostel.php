@@ -60,26 +60,13 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                             A simple success alert—check it out!
                                         </div>
                                             <label>Название хостела:</label>
-                                            <input class="form-control" placeholder="Введите фамилию гостя" name="hName" />
+                                            <input class="form-control" placeholder="Введите название хостела" name="hName" />
                                         </div>
                                         <div class="form-group">
                                             <label>Адрес Хостела:</label>
-                                            <input class="form-control" placeholder="Введите имя гостя" name="hAddress" />
+                                            <input class="form-control" placeholder="Введите адрес хостела" name="hAddress" />
                                         </div>
                                         <button type="submit" class="btn btn-default">Добавить хостел</button>
-                                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                                            <div class="toast-header">
-                                                <img src="..." class="rounded mr-2" alt="...">
-                                                <strong class="mr-auto">Bootstrap</strong>
-                                                <small class="text-muted">11 mins ago</small>
-                                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="toast-body">
-                                                Hello, world! This is a toast message.
-                                            </div>
-                                        </div>
                                     </form>
                                 <br />
                                 </div>

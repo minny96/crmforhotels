@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?php include('bd.php'); ?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
@@ -25,7 +26,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">pg_username</a><!--Будем сюда вставлять Имя админа--> 
+                <a class="navbar-brand" href="index.html">
+                <?php
+                        $get_user_query = 'select session_user';
+                        $get_user_process = pg_query($get_user_query) or die('Ошибка запроса: ' . pg_last_error());
+                        $session_user = pg_fetch_result($get_user_process, 0, 0);
+                        echo $session_user;  
+                     ?>
+                </a><!--Будем сюда вставлять Имя админа--> 
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
@@ -43,7 +51,15 @@ font-size: 16px;"><a href="#" class="btn btn-danger square-btn-adjust">Logout</a
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Панель администратора</h2>   
-                        <h5>Приветствуем, pg_username</h5>
+                        <h5>Приветствуем, 
+                        <?php
+                        $get_user_query = 'select session_user';
+                        $get_user_process = pg_query($get_user_query) or die('Ошибка запроса: ' . pg_last_error());
+                        $session_user = pg_fetch_result($get_user_process, 0, 0);
+                        echo $session_user;  
+                     ?>
+
+                        </h5>
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -55,7 +71,14 @@ font-size: 16px;"><a href="#" class="btn btn-danger square-btn-adjust">Logout</a
                     <i class="fa fa-envelope-o"></i>
                 </span>
                 <div class="text-box" >
-                    <p class="main-text">10<!--get_bookings_count()--></p>
+                <p class="main-text">
+                    <?php
+                        $get_count_query = 'select count(*)  FROM hotelcrm.hotels';
+                        $get_count_process = pg_query($get_count_query) or die('Ошибка запроса: ' . pg_last_error());
+                        $count_of_hostels = pg_fetch_result($get_count_process, 0, 0);
+                        echo $count_of_hostels;  
+                     ?>
+                     </p>
                     <p class="text-muted">хостелов</p>
                 </div>
              </div>
@@ -66,7 +89,14 @@ font-size: 16px;"><a href="#" class="btn btn-danger square-btn-adjust">Logout</a
                     <i class="fa fa-bars"></i>
                 </span>
                 <div class="text-box" >
-                    <p class="main-text">200</p>
+                    <p class="main-text">
+                    <?php
+                        $get_count_query1 = 'select count(*)  FROM hotelcrm.rooms';
+                        $get_count_process1 = pg_query($get_count_query1) or die('Ошибка запроса: ' . pg_last_error());
+                        $count_of_rooms = pg_fetch_result($get_count_process1, 0, 0);
+                        echo $count_of_rooms;  
+                     ?>
+                    </p>
                     <p class="text-muted">комнат</p>
                 </div>
              </div>
@@ -96,7 +126,6 @@ font-size: 16px;"><a href="#" class="btn btn-danger square-btn-adjust">Logout</a
 			</div>
                  <!-- /. ROW  -->
                 <hr />                
-
                  <!-- /. ROW  -->
                 <div class="row" >
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -110,56 +139,36 @@ font-size: 16px;"><a href="#" class="btn btn-danger square-btn-adjust">Logout</a
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Номер</th>
-                                            <th>Кол-во мест</th>
+                                            <th>Фамилия</th>
+                                            <th>Имя</th>
                                             <th>Хостел</th>
                                              <th>Менеджер</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1010</td>
-                                            <td>8</td>
-                                            <td>КапсЛок</td>
-                                            <td>Анна</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>100090</td>
-                                        </tr>
-                                         <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>100090</td>
-                                        </tr>
+                                    <?php
+
+                                        // Выполнение SQL-запроса
+                                        $query = 'select * from hotelcrm.manager_of_hotel;';
+                                        $result = pg_query($query) or die('Ошибка запроса: ' . pg_last_error());
+
+                                    // Вывод результатов в HTML
+                                    echo "<tbody>\n";
+                                    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+                                        echo "\t<tr>\n";
+                                        foreach ($line as $col_value) {
+                                            echo "\t\t<td>$col_value</td>\n";
+                                        }
+                                        echo "\t</tr>\n";
+                                    }
+                                    echo "</tbody>\n";
+
+                                    // Очистка результата
+                                    pg_free_result($result);
+
+                                    // Закрытие соединения
+                                    pg_close($dbconn);
+                                        ?>
 
                                     </tbody>
                                 </table>
