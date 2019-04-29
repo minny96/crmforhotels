@@ -92,7 +92,7 @@ CREATE TABLE hotelcrm.pay_info (
 WITH (
 	OIDS=FALSE
 );
--- Drop table
+
 
 -- DROP TABLE hotelcrm.rooms
 
@@ -104,6 +104,7 @@ CREATE TABLE hotelcrm.rooms (
 	price money NULL DEFAULT 0,
 	descr text NULL,
 	hotel_no int4 NULL,
+	is_booked bool NULL DEFAULT false,
 	CONSTRAINT rooms_pkey PRIMARY KEY (room_no),
 	CONSTRAINT rooms_hotel_no_fkey FOREIGN KEY (hotel_no) REFERENCES hotels(hotel_no)
 )
