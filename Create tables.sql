@@ -94,14 +94,16 @@ WITH (
 );
 
 
+-- Drop table
+
 -- DROP TABLE hotelcrm.rooms
 
 CREATE TABLE hotelcrm.rooms (
 	room_no bigserial NOT NULL,
 	"size" int4 NULL,
 	floor int4 NULL,
-	category varchar(20) NULL,
-	price money NULL DEFAULT 0,
+	category varchar(40) NULL,
+	price int4 NULL DEFAULT 0,
 	descr text NULL,
 	hotel_no int4 NULL,
 	is_booked bool NULL DEFAULT false,
