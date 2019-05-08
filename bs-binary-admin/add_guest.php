@@ -53,54 +53,54 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form role="form">
+                                    <form role="form" method="POST" action="addGuest.php">
                                         <div class="form-group">
                                             <label>Фамилия:</label>
-                                            <input class="form-control" placeholder="Введите фамилию гостя" />
+                                            <input class="form-control" placeholder="Введите фамилию гостя" name="hSurname" />
                                         </div>
                                         <div class="form-group">
                                             <label>Имя:</label>
-                                            <input class="form-control" placeholder="Введите имя гостя" />
+                                            <input class="form-control" placeholder="Введите имя гостя" name="hName" />
                                         </div>
                                         <div class="form-group">
                                             <label>Отчество:</label>
-                                            <input class="form-control" placeholder="Введите отчество гостя" />
+                                            <input class="form-control" placeholder="Введите отчество гостя" name="hLastname" />
                                         </div>
                                         <div class="form-group">
                                             <label>Дата рождения:</label>
-                                            <input class="form-control" placeholder="Введите дату рождения гостя" />
+                                            <input class="form-control" placeholder="Введите дату рождения гостя" name="hBday"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Страна рождения:</label>
-                                            <input class="form-control" placeholder="Введите страну рождения гостя" />
+                                            <input class="form-control" placeholder="Введите страну рождения гостя" name="hCountry"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Город:</label>
-                                            <input class="form-control" placeholder="Введите город по прописке гостя" />
+                                            <input class="form-control" placeholder="Введите город по прописке гостя" name="hCity" />
                                         </div>
                                         <div class="form-group">
                                             <label>Серия паспорта:</label>
-                                            <input class="form-control" placeholder="Введите серию паспорта гостя" />
+                                            <input class="form-control" placeholder="Введите серию паспорта гостя" name="hSerie"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Номер паспорта:</label>
-                                            <input class="form-control" placeholder="Введите номер паспорта гостя" />
+                                            <input class="form-control" placeholder="Введите номер паспорта гостя" name="hNumber"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Кем выдан:</label>
-                                            <textarea class="form-control" rows="2" placeholder="Введите орган, выдавший паспорт"></textarea>
+                                            <textarea class="form-control" rows="2" placeholder="Введите орган, выдавший паспорт" name="hWhogive"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Дата выдачи:</label>
-                                            <input class="form-control" placeholder="Введите дату выдачи паспорта гостя" />
+                                            <input class="form-control" placeholder="Введите дату выдачи паспорта гостя" name="hGivedate"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Дата регистрации:</label>
-                                            <input class="form-control" placeholder="Введите номер паспорта гостя" />
+                                            <input class="form-control" placeholder="Введите номер паспорта гостя"name="hRegdate" />
                                         </div>
                                         <div class="form-group">
                                             <label>Доолнительная информация о госте:</label>
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea class="form-control" rows="3" name="hDescr"></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-default">Добавить гостя</button>
                                     </form>

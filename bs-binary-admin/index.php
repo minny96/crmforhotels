@@ -43,7 +43,6 @@ font-size: 16px;"><a href="#" class="btn btn-danger square-btn-adjust">Logout</a
         <!--Подключаем меню-->  
         <?php 
             include('menu.php'); 
-            echo "Hui";
         ?>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
