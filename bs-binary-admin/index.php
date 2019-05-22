@@ -179,16 +179,6 @@ font-size: 16px;"><a href="#" class="btn btn-danger square-btn-adjust">Logout</a
                 </div>
                  <!-- /. ROW  -->
                  <div class="row">    
-                <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Bar Chart Example
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-bar-chart"></div>
-                        </div>
-                    </div>            
-                </div>
                       <div class="col-md-6 col-sm-12 col-xs-12">                     
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -198,22 +188,8 @@ font-size: 16px;"><a href="#" class="btn btn-danger square-btn-adjust">Logout</a
                             <div id="morris-area-chart"></div>
                         </div>
                     </div>            
-                </div> 
-                
-           </div>
-                 <!-- /. ROW  -->
-            <div class="row">                       
+                </div>                       
                 <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Donut Chart Example
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                        </div>
-                    </div>            
-                </div>
-                      <div class="col-md-6 col-sm-12 col-xs-12">                     
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Line Chart Example
