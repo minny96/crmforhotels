@@ -6,29 +6,28 @@
                 <img src="assets/img/find_user.png" class="user-image img-responsive"/>
 			</li>
 			<li>
-                <a  href="index.php"><i class="fa fa-dashboard fa-3x"></i>Главная</a>
-            </li>
-            	
-            <li  >
-                <a  href="table.html"><i class="fa fa-table fa-3x"></i>хз</a>
+                <a href="index.php"><i class="fa fa-dashboard fa-3x"></i>Главная</a>
             </li>
             <li>
-                <a   href="blank.html"><i class="fa fa-square-o fa-3x"></i>хз</a>
+                <a href="table.html"><i class="fa fa-table fa-3x"></i>хз</a>
+            </li>
+            <li>
+                <a href="blank.html"><i class="fa fa-square-o fa-3x"></i>хз</a>
             </li>	
             <li>
-                        <a href="#"><i class="fa fa-sitemap fa-3x"></i>Добавление информации<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a  href="add_hostel.php"><i class="fa fa-desktop fa-3x"></i>Добавить хостел</a>
-                            </li>
-                            <li>
-                                <a  href="add_room.php"><i class="fa fa-qrcode fa-3x"></i>Добавить комнату</a>
-                            </li>
-                            <li  >
-                                <a  href="add_guest.php"><i class="fa fa-bar-chart-o fa-3x"></i>Добавить гостя</a>
-                            </li>
-                        </ul>
-                      </li> 
+                <a href="#"><i class="fa fa-sitemap fa-3x"></i>Добавление информации<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="add_hostel.php"><i class="fa fa-desktop fa-3x"></i>Добавить хостел</a>
+                    </li>
+                    <li>
+                        <a href="add_room.php"><i class="fa fa-qrcode fa-3x"></i>Добавить комнату</a>
+                    </li>
+                    <li>
+                        <a href="add_guest.php"><i class="fa fa-bar-chart-o fa-3x"></i>Добавить гостя</a>
+                    </li>
+                </ul>
+            </li> 
         </ul>
     </div>
 </nav>
