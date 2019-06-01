@@ -100,9 +100,9 @@ WITH (
 
 CREATE TABLE hotelcrm.rooms (
 	room_no bigserial NOT NULL,
-	"size" int4 NULL,
-	floor int4 NULL,
-	category varchar(40) NULL,
+	number int4 NULL,
+	room_type varchar(40) NULL,
+    capacity int4 null,
 	price int4 NULL DEFAULT 0,
 	descr text NULL,
 	hotel_no int4 NULL,

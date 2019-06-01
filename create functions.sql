@@ -100,12 +100,13 @@ as $function$
 $function$;
 
 --добавление номера к хостелу, теперь воркает
-CREATE OR REPLACE FUNCTION hotelcrm.add_room(xsize integer, xfloor integer, xcategory character varying, xprice integer, xdescr text, xhotel_no integer, xbooking boolean)
+CREATE OR REPLACE FUNCTION hotelcrm.add_room(xnumber integer, xtype character varying, xcapacity integer, xprice integer, xdescr text, xhotel_no integer, xbooking boolean)
  RETURNS boolean
  LANGUAGE plpgsql
 AS $function$
 	begin
-		INSERT INTO hotelcrm.rooms ("size", floor, category, price, descr, hotel_no, is_booked) VALUES(xsize, xfloor, xcategory, xprice, xdescr, xhotel_no, xbooking);	
+		INSERT INTO hotelcrm.rooms ("number", room_type, capacity, price, descr, hotel_no, is_booked) VALUES(xnumber, xtype, xcapacity, xprice, xdescr, xhotel_no, xbooking);	
 		return true; 
 	end;
 $function$;
+
