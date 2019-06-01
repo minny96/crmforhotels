@@ -93,7 +93,7 @@ WITH (
 	OIDS=FALSE
 );
 
-
+--- НОВЫЕ
 -- Drop table
 
 -- DROP TABLE hotelcrm.rooms
@@ -108,8 +108,24 @@ CREATE TABLE hotelcrm.rooms (
 	hotel_no int4 NULL,
 	is_booked bool NULL DEFAULT false,
 	CONSTRAINT rooms_pkey PRIMARY KEY (room_no),
-	CONSTRAINT rooms_hotel_no_fkey FOREIGN KEY (hotel_no) REFERENCES hotels(hotel_no)
 )
 WITH (
 	OIDS=FALSE
 );
+
+
+CREATE TABLE bookings (
+	booking_no bigserial NOT NULL,
+	firstname varchar(80) NULL,
+	lastname varchar(80) NULL,
+	email text NULL,
+	gender varchar(40) NULL,
+	phone varchar(40) NULL,
+	arrive timestamp NULL,
+	depart timestamp NULL, 
+	no_of_persons int4 NULL,
+	is_payment bool NULL  DEFAULT false,
+	room_no int4 null,
+	constraint bookings_pkey PRIMARY KEY (booking_no),
+	CONSTRAINT bookking_room_no_fkey FOREIGN KEY (room_no) REFERENCES rooms(room_no) on delete cascade)
+

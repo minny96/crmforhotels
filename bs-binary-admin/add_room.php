@@ -37,16 +37,16 @@
                                 <div class="col-md-6">
                                     <form role="form" method="POST" action="addRoom.php">
                                         <div class="form-group">
-                                            <label>Размер номера:</label>
-                                            <input class="form-control" placeholder="Введите размер номера" name="hSize"/>
+                                            <label>Номер комнаты:</label>
+                                            <input class="form-control" placeholder="Введите номер комнаты" name="hNumber"/>
                                         </div>
                                         <div class="form-group">
-                                            <label>Этаж:</label>
-                                            <input class="form-control" placeholder="Введите этаж" name="hFloor" />
+                                            <label>Тип номера:</label>
+                                            <input class="form-control" placeholder="Введите тип номера" name="hType" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Категория:</label>
-                                            <input class="form-control" placeholder="Введите категория" name="hCategory" />
+                                            <label>Вместимость:</label>
+                                            <input class="form-control" placeholder="Введите вместимость (1-8)" name="hCapacity" />
                                         </div>
                                         <div class="form-group">
                                             <label>Стоимость:</label>
@@ -60,7 +60,7 @@
                                             <label>Принадлежность хостелу:</label>
                                             <input class="form-control" placeholder="Введите hostel_no" name="hHostelNo"/>
                                         </div>
-                                        <button type="submit" class="btn btn-default">Добавить комнату к хостелу</button>
+                                        <button type="submit" class="btn btn-default">Добавить номер в БД</button>
                                     </form>
                                 <br />
                                 </div>
