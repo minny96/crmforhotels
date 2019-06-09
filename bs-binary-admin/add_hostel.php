@@ -20,7 +20,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>Добавление хостела</h2>   
+                     <h2>Добавление работника</h2>   
                     </div>
                 </div>
                  <!-- /. ROW  -->
@@ -30,7 +30,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Форма добавления хостела
+                            Форма добавления работника
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -38,13 +38,13 @@
                                     <form role="form" method="POST" action="addHostel.php"> 
                                         <div class="form-group">
                                             <label>Название хостела:</label>
-                                            <input class="form-control" placeholder="Введите название хостела" name="hName" />
+                                            <input class="form-control" placeholder="Введите Фамиилию работника" name="hFirstName" />
                                         </div>
                                         <div class="form-group">
                                             <label>Адрес Хостела:</label>
-                                            <input class="form-control" placeholder="Введите адрес хостела" name="hAddress" />
+                                            <input class="form-control" placeholder="Введите Имя  работника" name="hName" />
                                         </div>
-                                        <button type="submit" class="btn btn-default">Добавить хостел</button>
+                                        <button type="submit" class="btn btn-default">Добавить работника</button>
                                     </form>
                                 <br />
                                 </div>

@@ -9,7 +9,7 @@
                 <a href="index.php"><i class="fa fa-dashboard fa-3x"></i>Главная</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-sitemap fa-3x"></i>Хостелы<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-sitemap fa-3x"></i>Работники<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="add_hostel.php"><i class="fa fa-desktop fa-3x"></i>Добавить хостел</a>
