@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Просмотр номеров</title>
+    <title>Просмотр бронирований</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/custom.css" rel="stylesheet" />
@@ -20,7 +20,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>Просмотр номеров</h2>   
+                     <h2>Просмотр бронирований</h2>   
                     </div>
                 </div>
                  <!-- /. ROW  -->
@@ -30,7 +30,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Все номера
+                            Все брони
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -38,16 +38,20 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Тип</th>
-                                            <th>Вместимость</th>
-                                            <th>Цена</th>
-                                            <th>Описание</th>
+                                            <th>Фамилия</th>
+                                            <th>Имя</th>
+                                            <th>E-Mail</th>
+                                            <th>Телефон</th>
+                                            <th>Въезд</th>
+                                            <th>Отъезд</th>
+                                            <th>Кол-во персон</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                         // Выполнение SQL-запроса
-                                        $query = 'SELECT "number", room_type, capacity, price, descr FROM hotelcrm.rooms;';
+                                        $query = 'SELECT "number", firstname, lastname, email, phone, arrive, depart, no_of_persons
+                                        FROM hotelcrm.last_bookings order by arrive desc';
                                         $result = pg_query($query) or die('Ошибка запроса: ' . pg_last_error());
                                         // Вывод результатов в HTML
                                         echo "<tbody>\n";

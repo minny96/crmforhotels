@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Просмотр номеров</title>
+    <title>Просмотр отчета по работникам</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/custom.css" rel="stylesheet" />
@@ -20,7 +20,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>Просмотр номеров</h2>   
+                     <h2>Просмотр  отчета по работникам</h2>   
                     </div>
                 </div>
                  <!-- /. ROW  -->
@@ -37,19 +37,16 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Тип</th>
-                                            <th>Вместимость</th>
-                                            <th>Цена</th>
-                                            <th>Описание</th>
-                                            <th>Свободно</th>
+                                            <th>Фамилия</th>
+                                            <th>Имя</th>
+                                            <th>Количество часов</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                         // Выполнение SQL-запроса
-                                        $query = 'select distinct on(r.room_no) r."number", r.room_type, r.capacity, r.price, r.descr, r.capacity - b.no_of_persons as freecap FROM hotelcrm.rooms r, hotelcrm.bookings b
-                                        where r.room_no = b.room_no;';
+                                        $query = 'SELECT firstname, lastname, sum(countofhours) as allhours
+                                        FROM hotelcrm.employees group by firstname, lastname';
                                         $result = pg_query($query) or die('Ошибка запроса: ' . pg_last_error());
                                         // Вывод результатов в HTML
                                         echo "<tbody>\n";

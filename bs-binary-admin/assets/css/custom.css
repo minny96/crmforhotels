@@ -27,6 +27,12 @@ body {
     background:#F3F3F3;
    
 }
+.authform {
+    margin: 0 auto;
+    text-align:  center!important;
+    max-width: 350px;
+    width: 100%;
+}
 #page-inner {
     width:100%;
     margin:10px 20px 10px 0px;

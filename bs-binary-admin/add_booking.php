@@ -85,6 +85,10 @@
                                             <input class="form-control" placeholder="Введите номер паспорта гостя"name="hRegdate" />
                                         </div>
                                         <div class="form-group">
+                                            <label>Номер комнаты:</label>
+                                            <input class="form-control" placeholder="Введите номер комнаты, куда будет заселен гость"name="hRegdate" />
+                                        </div>
+                                        <div class="form-group">
                                             <label>Доолнительная информация о госте:</label>
                                             <textarea class="form-control" rows="3" name="hDescr"></textarea>
                                         </div>

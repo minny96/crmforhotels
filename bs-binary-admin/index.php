@@ -23,56 +23,14 @@
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Панель администратора</h2>   
-                        <h5>Приветствуем, 
-                        <?php
-                            $get_user_query = 'select session_user';
-                            $get_user_process = pg_query($get_user_query) or die('Ошибка запроса: ' . pg_last_error());
-                            $session_user = pg_fetch_result($get_user_process, 0, 0);
-                            echo $session_user;  
-                        ?>
+                        <h5>Приветствуем, Дарья
                         </h5>
                     </div>
                 </div>              
                  <!-- /. ROW  -->
                 <hr />
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-6">           
-			            <div class="panel panel-back noti-box">
-                            <span class="icon-box bg-color-red set-icon">
-                                <i class="fa fa-envelope-o"></i>
-                            </span>
-                            <div class="text-box" >
-                                <p class="main-text">
-                                    <?php
-                                        $get_count_query = 'select count(*)  FROM hotelcrm.hotels';
-                                        $get_count_process = pg_query($get_count_query) or die('Ошибка запроса: ' . pg_last_error());
-                                        $count_of_hostels = pg_fetch_result($get_count_process, 0, 0);
-                                        echo $count_of_hostels;  
-                                    ?>
-                                </p>
-                                <p class="text-muted">хостелов</p>
-                            </div>
-                        </div>
-		            </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">           
-                        <div class="panel panel-back noti-box">
-                            <span class="icon-box bg-color-green set-icon">
-                                <i class="fa fa-bars"></i>
-                            </span>
-                            <div class="text-box" >
-                                <p class="main-text">
-                                <?php
-                                    $get_count_query1 = 'select count(*)  FROM hotelcrm.rooms';
-                                    $get_count_process1 = pg_query($get_count_query1) or die('Ошибка запроса: ' . pg_last_error());
-                                    $count_of_rooms = pg_fetch_result($get_count_process1, 0, 0);
-                                    echo $count_of_rooms;  
-                                ?>
-                                </p>
-                                <p class="text-muted">комнат</p>
-                            </div>
-                        </div>
-		            </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">           
+                    <div class="col-md-6 col-sm-1 col-xs-12">           
                         <div class="panel panel-back noti-box">
                             <span class="icon-box bg-color-blue set-icon">
                                 <i class="fa fa-bell-o"></i>
@@ -83,7 +41,7 @@
                             </div>
                         </div>
                         </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">           
+                    <div class="col-md-6 col-sm-12 col-xs-12">           
                         <div class="panel panel-back noti-box">
                             <span class="icon-box bg-color-brown set-icon">
                                 <i class="fa fa-rocket"></i>
@@ -102,23 +60,28 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           Свободные номера
+                           Последние бронирования
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
-                                    <thead>
+                                <thead>
                                         <tr>
-                                            <th>Этаж</th>
-                                            <th>Категория</th>
-                                            <th>Цена</th>
-                                            <th>Описание</th>
+                                            <th>#</th>
+                                            <th>Фамилия</th>
+                                            <th>Имя</th>
+                                            <th>E-Mail</th>
+                                            <th>Телефон</th>
+                                            <th>Въезд</th>
+                                            <th>Отъезд</th>
+                                            <th>Кол-во персон</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                         // Выполнение SQL-запроса
-                                        $query = 'SELECT floor, category, price, descr FROM hotelcrm.free_rooms;';
+                                        $query = 'SELECT "number", firstname, lastname, email, phone, arrive, depart, no_of_persons
+                                        FROM hotelcrm.last_bookings order by arrive desc';
                                         $result = pg_query($query) or die('Ошибка запроса: ' . pg_last_error());
                                         // Вывод результатов в HTML
                                         echo "<tbody>\n";
@@ -143,28 +106,6 @@
                 </div>
             </div>
                  <!-- /. ROW  -->
-                <div class="row">    
-                      <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Area Chart Example
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
-                        </div>
-                    </div>            
-                </div>                       
-                <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Line Chart Example
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-line-chart"></div>
-                        </div>
-                    </div>            
-                </div>   
-           </div>
              <!-- /. PAGE INNER  -->
             </div>
          <!-- /. PAGE WRAPPER  -->

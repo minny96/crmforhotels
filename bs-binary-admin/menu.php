@@ -12,10 +12,10 @@
                 <a href="#"><i class="fa fa-sitemap fa-3x"></i>Работники<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="add_hostel.php"><i class="fa fa-desktop fa-3x"></i>Добавить хостел</a>
+                        <a href="add_hostel.php"><i class="fa fa-desktop fa-3x"></i>Добавить информацию</a>
                     </li>
                     <li>
-                        <a href="view_hostel.php"><i class="fa fa-desktop fa-3x"></i>Посмотреть хостелы</a>
+                        <a href="view_employee_info.php"><i class="fa fa-desktop fa-3x"></i>Посмотреть отчет за месяц</a>
                     </li>
                 </ul>
             </li> 
@@ -31,7 +31,7 @@
                 </ul>
             </li> 
             <li>
-                <a href="#"><i class="fa fa-sitemap fa-3x"></i>Бронирования<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-sitemap fa-3x"></i>Оформление заезда<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="add_booking.php"><i class="fa fa-bar-chart-o fa-3x"></i>Добавить бронь</a>
