@@ -11,7 +11,7 @@ AS $function$
 $function$;
 
 --Функция добавления бронирования
-CREATE OR REPLACE FUNCTION hotelcrm.add_bookings(xfirstname character varying, xlastname character varying, xemail text, xgender character varying, xphone character varying, xarrive timestamp, xdepart timestamp, xno_of_persons integer, xis_payment boolean, xroom_no integer)
+CREATE OR REPLACE FUNCTION hotelcrm.add_bookings(xfirstname character varying, xlastname character varying, xemail text, xgender character varying, xphone character varying, xarrive timestamp without time zone, xdepart timestamp without time zone, xno_of_persons integer, xis_payment boolean, xroom_no integer)
  RETURNS boolean
  LANGUAGE plpgsql
 AS $function$
@@ -21,12 +21,14 @@ AS $function$
 	end;
 $function$;
 
-CREATE OR REPLACE FUNCTION hotelcrm.add_employees(xfirstname character varying, xlastname character varying)
+
+-- функция добавления 
+CREATE OR REPLACE FUNCTION hotelcrm.add_employees(xfirstname character varying, xlastname character varying, xposition character varying, xdateofin date, xcountofhours integer)
  RETURNS boolean
  LANGUAGE plpgsql
 AS $function$
 	begin
-		INSERT INTO hotelcrm.employees (firstname, lastname) VALUES((xfirstname, xlastname);
+		INSERT INTO hotelcrm.employees (firstname, lastname, position, dateofin, countofhours) VALUES((xfirstname, xlastname, xposition, xdateofin, xcountofhours);
 		return true; 
 	end;
 $function$;

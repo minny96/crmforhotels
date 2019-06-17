@@ -30,7 +30,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Все номера
+                            Отчет
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
